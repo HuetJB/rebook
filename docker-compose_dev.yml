@@ -1,0 +1,40 @@
+version: '3.3'
+
+services:
+  ecoboard-back-dev:
+    build:
+      context: ./ecoboard_back/
+      dockerfile: Dockerfile-back-dev
+    container_name: ecoboard-back-dev
+    volumes:
+      - ./ecoboard_back:/usr/src/app
+    env_file:
+      - variables-dev.env
+    restart: always
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+    networks:
+      - web
+      
+  ecoboard-front-dev:
+    build:
+      context: ./ecoboard_front/
+      dockerfile: Dockerfile-front-dev
+    container_name: ecoboard-front-dev
+    restart: always
+    environment: 
+      - PORT=80
+    ports: 
+      - "80:80"
+    expose:
+      - "80"
+    networks:
+      - web
+    volumes:
+      - ./ecoboard_front:/usr/src/app
+
+networks:
+  web:
+

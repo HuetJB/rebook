@@ -1,0 +1,52 @@
+version: '3.3'
+
+services:
+  ecoboard-back-prod:
+    build:
+      context: ./ecoboard_back/
+      dockerfile: Dockerfile-back-prod
+    container_name: ecoboard-back-prod
+    volumes:
+      - pdfecoboard:/usr/src/app/contrats
+    env_file:
+      - variables-prod.env
+    restart: always
+    expose:
+      - "3000"
+    networks:
+      - web
+      - vpn
+
+  ecoboard-front-prod:
+    build:
+      context: ./ecoboard_front/
+      dockerfile: Dockerfile-front-prod
+    container_name: ecoboard-front-prod
+    restart: always
+    environment: 
+      - INLINE_RUNTIME_CHUNK=false
+    expose:
+      - "80"
+    networks:
+      - web
+      - vpn
+    labels:
+      - "traefik.docker.network=web"
+      - "traefik.enable=true"
+      - "traefik.http.routers.ecoboard.rule=Host(`ecoboard.fr`,`www.ecoboard.fr`)"
+      - "traefik.http.routers.ecoboard.entrypoints=websecure"
+      - "traefik.http.routers.ecoboard.tls.certresolver=myresolver"
+      - "traefik.http.routers.ecoboardinsecure.rule=Host(`ecoboard.fr`,`www.ecoboard.fr`)"  
+      - "traefik.http.routers.ecoboardinsecure.entrypoints=web"  
+      - "traefik.http.routers.ecoboardinsecure.middlewares=redirect-to-httpsecoboard"
+      - "traefik.http.middlewares.redirect-to-httpsecoboard.redirectscheme.scheme=https"
+
+networks:
+  web:
+    external: true
+  vpn:
+    external: true
+
+volumes:
+  pdfecoboard:
+
