@@ -29,7 +29,6 @@ services:
   react:
     build:
       context: ./frontend/
-      dockerfile: Dockerfile-front
     container_name: rebook-front
     restart: always
     env_file:
