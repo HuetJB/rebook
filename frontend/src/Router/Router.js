@@ -12,18 +12,19 @@ export default function RouterFunction() {
 
   return (
     <Router>
-      <Switch>
-        <Header />
+      <Header />
 
+      <Switch>
         <Route path="/test">
           <RequestTest />
         </Route>
+        
         <Route path="/">
           <Home />
         </Route>
-        
-        <Footer />
       </Switch>
+
+      <Footer />
     </Router>
   );
 }
