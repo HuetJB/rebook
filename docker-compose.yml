@@ -6,7 +6,7 @@ services:
     container_name: rebook-postgres
     image: postgres:latest
     env_file:
-      - .env/variables-bdd.env
+      - .env/back.env
     restart: always
     ports:
       - "5432:5432"
@@ -18,7 +18,7 @@ services:
     image: strapi/strapi:latest
     restart: always
     env_file:
-      - .env/variables-back.env
+      - .env/back.env
     volumes:
       - ./backend:/srv/app
     ports:
@@ -32,9 +32,9 @@ services:
     container_name: rebook-front
     restart: always
     env_file:
-      - .env/variables-front.env
+      - .env/front.env
     ports: 
-      - "3000:3000"
+      - "80:80"
     volumes:
       - ./frontend:/usr/src/app
 
