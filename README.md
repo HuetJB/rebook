@@ -1,18 +1,21 @@
-# ReBook Project
+# Rebook
 
-Projet d'un site web pour permettre à des étudiants de vendre leurs livres scolaires.
+Rebook is a website allowing students to resell school books to each other.
 
-___
+## Start the project
 
-### For install the ReBook Project
-
-```
-chmod +x setup.sh
-./setup.sh
+```bash
+./run.sh
 ```
 
-### For run the ReBook Project
+## For see logs
 
+```bash
+./show_log.sh
 ```
-docker-compose up
+
+## For run pipelines tests in local
+
+```bash
+./tests.sh
 ```

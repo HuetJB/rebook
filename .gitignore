@@ -1,3 +1,13 @@
 /bdd
 /.env/back.env
 /.env/front.env
+
+.env
+.env.*
+!.env.example
+
+docker-compose.override.local.yml
+
+__pycache__
+.pytest_cache
+.mypy_cache
