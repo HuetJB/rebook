@@ -1,5 +1,19 @@
 {
   "files.associations": {
     "env.*": "shellscript"
-  }
+  },
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  "python.testing.pytestArgs": [
+    "."
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "python.testing.autoTestDiscoverOnSaveEnabled": true,
+  "ruff.lint.args": [
+    "--config=${workspaceFolder}/pyproject.toml"
+  ],
+  "mypy.configFile": "./pyproject.toml",
+  "mypy.dmypyExecutable": "${workspaceFolder}/.venv/bin/dmypy",
+  "mypy.debugLogging": false,
+  "mypy.runUsingActiveInterpreter": false
 }

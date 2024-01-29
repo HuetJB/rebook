@@ -6,6 +6,7 @@ authors = ["AureProd <aureprod0@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "3.11.3"
+django = "^5.0.1"
 
 [tool.poetry.group.lint.dependencies]
 pre-commit = "^3.4.0"
