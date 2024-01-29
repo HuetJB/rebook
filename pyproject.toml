@@ -1,0 +1,52 @@
+[tool.poetry]
+name = "Rebook"
+version = "1.0.0"
+description = "Website for refund school books"
+authors = ["AureProd <aureprod0@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "3.11.3"
+
+[tool.poetry.group.lint.dependencies]
+pre-commit = "^3.4.0"
+
+[build-system]
+requires = ["poetry-core", "poetry>=1.6.1"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 120
+
+[tool.ruff]
+line-length = 120
+# - E501 line lengths: yapf and isort already handle them
+# - B905 zip(*, strict=True): strict was introduced in Python 3.10+
+ignore = ["E501", "B905"]
+# automatically fixes when possible
+fix = true
+
+[tool.ruff.per-file-ignores]
+# do not check unused imports in __init__.py files (they expose module features)
+"__init__.py" = ["E402"]
+
+[tool.mypy]
+ignore_missing_imports = true
+strict_optional = true
+
+[tool.isort]
+py_version=38
+# maintain consistency with other quality tools
+line_length = 120
+# consistency with ruff-format: mode 3
+# from third_party import (
+#     lib1,
+#     lib2,
+#     [...]
+#     libn,
+# )
+multi_line_output = 3
+include_trailing_comma = true
+# TESTS->known_tests: create a specific section for imports of tests modules
+# (this is the reason why isort is still used alongside ruff-format)
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER", "TESTS"]
+known_tests = ["tests"]
