@@ -2,9 +2,6 @@ name: Build docker image
 
 on: [push]
 
-env:
-  DOCKER_IMAGE: "ghcr.io/aureprod/rebook"
-
 jobs:
   build_job:
     runs-on: ubuntu-latest
@@ -14,7 +11,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Get docker image name
-        run: echo "DOCKER_IMAGE=${{ env.DOCKER_IMAGE }}:$(git describe --tags --match 'v[0-9]*.[0-9]*.[0-9]' --dirty --always)" >> $env:GITHUB_ENV
+        run: echo "DOCKER_IMAGE=ghcr.io/aureprod/rebook:$(git describe --tags --match 'v[0-9]*.[0-9]*.[0-9]' --dirty --always)" >> $GITHUB_ENV
 
       - name: Pre-commit code check
         uses: pre-commit/action@v3.0.0
