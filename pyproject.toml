@@ -15,6 +15,10 @@ pre-commit = "^3.4.0"
 requires = ["poetry-core", "poetry>=1.6.1"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--disable-warnings"
+
 [tool.black]
 line-length = 120
 

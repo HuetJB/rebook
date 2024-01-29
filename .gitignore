@@ -1,15 +1,9 @@
-/bdd
-/.env/back.env
-/.env/front.env
-
 .env
-.env.*
-!.env.example
+.env.tmp
 
-docker-compose.override.local.yml
+./docker-compose.yml
 
 __pycache__
 .pytest_cache
 .mypy_cache
-
 .venv

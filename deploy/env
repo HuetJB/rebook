@@ -1,0 +1,9 @@
+
+APP_NAME=Rebook
+APP_DESCRIPTION=Website for refund school books
+
+CONTACT_NAME=AureProd
+CONTACT_EMAIL=aureprod0@gmail.com
+CONTACT_WEBSITE=https://github.com/AureProd/rebook
+
+DJANGO_SECRET_KEY=
