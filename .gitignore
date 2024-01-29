@@ -1,9 +1,9 @@
 .env
 .env.tmp
 
-./docker-compose.yml
-
 __pycache__
 .pytest_cache
 .mypy_cache
 .venv
+
+/docker-compose.yml
