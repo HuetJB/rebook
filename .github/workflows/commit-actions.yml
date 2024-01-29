@@ -38,4 +38,4 @@ jobs:
           sarif_file: 'trivy-results.sarif'
 
       - name: Push Docker image
-        run: docker push ${{ DOCKER_IMAGE }}
+        run: docker push ${{ env.DOCKER_IMAGE }}
