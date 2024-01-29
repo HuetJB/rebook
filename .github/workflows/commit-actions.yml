@@ -3,7 +3,7 @@ name: Build docker image
 on: [push]
 
 env:
-  DOCKER_IMAGE: ghcr.io/aureprod/rebook:${{ github.ref_name }}_latest
+  DOCKER_IMAGE: "ghcr.io/aureprod/rebook"
 
 jobs:
   build_job:
@@ -13,6 +13,9 @@ jobs:
       - name: Checkout of branch ${{ github.ref_name }}
         uses: actions/checkout@v3
 
+      - name: Get docker image name
+        run: echo "DOCKER_IMAGE=${{ env.DOCKER_IMAGE }}:$(git describe --tags --match 'v[0-9]*.[0-9]*.[0-9]' --dirty --always)" >> $env:GITHUB_ENV
+
       - name: Pre-commit code check
         uses: pre-commit/action@v3.0.0
 
@@ -20,7 +23,7 @@ jobs:
         run: docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.REBOOK_CI_PACKAGE_RW }}
 
       - name: Build Docker image
-        run: docker build -t ${{ env.DOCKER_IMAGE }} -f ./api/config/Dockerfile ./api
+        run: docker build -t ${{ env.DOCKER_IMAGE }} --build-arg "PYTHON_VERSION=$(cat .python-version)" -f ./deploy/Dockerfile .
 
       - name: Run Trivy vulnerability scanner
         uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
