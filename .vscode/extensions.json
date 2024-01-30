@@ -18,7 +18,6 @@
         "redhat.vscode-yaml",
         "simonsiefke.svg-preview",
         "bierner.markdown-mermaid",
-        "matangover.mypy",
-        "github.vscode-github-actions"
+        "matangover.mypy"
     ]
 }
