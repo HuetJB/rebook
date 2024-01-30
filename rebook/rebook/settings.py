@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = getenv("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True if getenv("APP_DEBUG", default=None) == "1" else False
+DEBUG = bool(getenv("APP_DEBUG", default=0))
 
-ALLOWED_HOSTS = ["localhost", "0.0.0.0"]
+ALLOWED_HOSTS = getenv("DJANGO_ALLOWED_HOSTS", default="").split(" ")
 
 
 # Application definition
@@ -76,8 +76,12 @@ WSGI_APPLICATION = "rebook.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": getenv("DB_DATABASE"),
+        "USER": getenv("DB_USERNAME"),
+        "PASSWORD": getenv("DB_PASSWORD"),
+        "HOST": getenv("DB_HOST"),
+        "PORT": getenv("DB_PORT"),
     }
 }
 

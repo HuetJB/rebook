@@ -1,34 +1,25 @@
 #!/bin/bash
 
 # Basic usage : ./setup.sh
-# Advanced variables :
-#   INSTANCE_NAME : change the default docker compose instance name
-#   URL_PORT : change the default port to 3000
 
-# Check if docker-compose file already exist
-if [ -f docker-compose.yml ]; then
-    echo "/!\ ERROR : The docker-compose file already exist"
-    exit 1
-fi
+password_generator() {
+    tr -dc 'A-Za-z0-9' </dev/urandom | head -c $1
+}
 
 # Define default env vars
 INSTANCE_NAME="${USER}-$(basename $(pwd))"
 APP_VERSION=$(git describe --tags --match 'v[0-9]*.[0-9]*.[0-9]' --dirty --always)
 PYTHON_VERSION=$(cat .python-version | head -n1)
+DJANGO_ALLOWED_HOSTS="localhost 127.0.0.1 0.0.0.0 [::1]"
+REBOOK_IMAGE="rebook:${INSTANCE_NAME}"
+APP_PORT=8000
+DB_PASSWORD=$(password_generator 50)
+DJANGO_SECRET_KEY=$(password_generator 100)
+
+export INSTANCE_NAME APP_VERSION PYTHON_VERSION DJANGO_ALLOWED_HOSTS REBOOK_IMAGE APP_PORT DB_PASSWORD DJANGO_SECRET_KEY
 
 # Generate .env file
-cat << EOF > .env.tmp
-INSTANCE_NAME=${INSTANCE_NAME}
-
-APP_VERSION=${APP_VERSION}
-
-REBOOK_IMAGE=rebook:${INSTANCE_NAME}
-
-PYTHON_VERSION=${PYTHON_VERSION}
-
-EOF
-
-cat deploy/env >> .env.tmp
+envsubst < deploy/env > .env.tmp
 
 # Construct docker compose
 docker compose -p "${INSTANCE_NAME}" --env-file .env.tmp --project-directory . -f ./deploy/docker-compose.yml -f ./deploy/docker-compose-dev-override.yml config > docker-compose.yml
