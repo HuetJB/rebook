@@ -18,13 +18,8 @@ DJANGO_SECRET_KEY=$(password_generator 100)
 
 export INSTANCE_NAME APP_VERSION PYTHON_VERSION DJANGO_ALLOWED_HOSTS REBOOK_IMAGE APP_PORT DB_PASSWORD DJANGO_SECRET_KEY
 
-# Generate .env file
-envsubst < deploy/env > .env.tmp
-
 # Construct docker compose
-docker compose -p "${INSTANCE_NAME}" --env-file .env.tmp --project-directory . -f ./deploy/docker-compose.yml -f ./deploy/docker-compose-dev-override.yml config > docker-compose.yml
-
-rm .env.tmp
+docker compose -p "${INSTANCE_NAME}" --env-file deploy/env --project-directory . -f ./deploy/docker-compose.yml -f ./deploy/docker-compose-dev-override.yml config > docker-compose.yml
 
 echo "Instance ${INSTANCE_NAME} ready"
 echo "Your docker-compose.yml file is ready to use"
