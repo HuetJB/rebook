@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  rebook:
+    build:
+      context: .
+      dockerfile: deploy/Dockerfile
+      target: dev
+      args:
+        - PYTHON_VERSION=${PYTHON_VERSION}
+    volumes:
+      - ./rebook:/usr/src/app/
+    ports:
+      - 5678:5678 # port for vscode debugger

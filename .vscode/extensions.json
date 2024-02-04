@@ -1,0 +1,23 @@
+{
+    "recommendations": [
+        "augustocdias.tasks-shell-input",
+        "mrcodingb.postman-collection-explorer",
+        "ms-python.python",
+        "donjayamanne.python-extension-pack",
+        "mgesbert.python-path",
+        "njqdev.vscode-python-typehint",
+        "bibhasdn.random-string-password-generator",
+        "charliermarsh.ruff",
+        "eamodio.gitlens",
+        "mhutchie.git-graph",
+        "tamasfe.even-better-toml",
+        "ms-azuretools.vscode-docker",
+        "njpwerner.autodocstring",
+        "ms-python.vscode-pylance",
+        "wayou.vscode-todo-highlight",
+        "redhat.vscode-yaml",
+        "simonsiefke.svg-preview",
+        "bierner.markdown-mermaid",
+        "matangover.mypy"
+    ]
+}
