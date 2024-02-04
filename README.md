@@ -1,4 +1,4 @@
-# Rebook test
+# Rebook
 
 Rebook is a website allowing students to resell school books to each other.
 
