@@ -1,4 +1,4 @@
-# Rebook
+# Rebook test
 
 Rebook is a website allowing students to resell school books to each other.
 
@@ -37,12 +37,28 @@ docker compose exec rebook python manage.py migrate
 docker compose exec rebook python manage.py createsuperuser
 ```
 
+## For install poetry for dev in local
+
+```bash
+poetry install
+```
+
 ## To run tests in local
 
 ### Linter and formater tests :
 
 ```sh
 poetry run pre-commit run -a
+```
+
+## Pre-commit
+
+For install pre-commit in your local repository
+
+```bash
+poetry install
+pre-commit install
+pre-commit installed at .git/hooks/commit-msg
 ```
 
 ## Docker compose
