@@ -23,6 +23,20 @@ Rebook is a website allowing students to resell school books to each other.
 docker compose up -d
 ```
 
+## Use Django manager script
+
+### To migrate Django database
+
+```bash
+docker compose exec rebook python manage.py migrate
+```
+
+### To create a admin user for the Django app
+
+```bash
+docker compose exec rebook python manage.py createsuperuser
+```
+
 ## To run tests in local
 
 ### Linter and formater tests :
@@ -41,13 +55,16 @@ To modify something inside docker-compose, use the source file and re-run `./set
 
 ## Environment variables
 
-All environment variables are generated from `deploy/env.example` in `.env` by the script `./setup.sh`
+All environment variables are generated from `deploy/env` in the `docker-compose.yml` file by the script `./setup.sh`
 
 ## Naming convention
 
 ### For branchs
 
-Format of branch name : `type/name`
+Format of branch name :
+```txt
+<type>/<name of branch>
+```
 
 Availables type :
 
@@ -60,8 +77,8 @@ Availables type :
 
 Format of commit messages :
 
-```
-<type>(<scope>): <subject>
+```txt
+<type>(<scope>): <subject of commit>
 ```
 
 Availables type :
