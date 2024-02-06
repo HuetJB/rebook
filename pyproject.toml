@@ -12,6 +12,9 @@ psycopg2-binary = "^2.9.9"
 [tool.poetry.group.lint.dependencies]
 pre-commit = "^3.4.0"
 
+[tool.poetry.group.dev.dependencies]
+debugpy = "^1.8.0"
+
 [build-system]
 requires = ["poetry-core", "poetry>=1.6.1"]
 build-backend = "poetry.core.masonry.api"

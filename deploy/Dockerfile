@@ -26,7 +26,7 @@ EXPOSE 8000
 
 FROM build AS dev
 
-RUN pip install debugpy
+RUN poetry install --only dev
 
 ENV APP_DEBUG=1 \
     PYDEVD_DISABLE_FILE_VALIDATION=1
