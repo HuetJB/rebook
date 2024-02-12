@@ -8,6 +8,7 @@ repos:
     -   id: check-added-large-files
     -   id: detect-private-key
     -   id: end-of-file-fixer
+        exclude: "^rebook/app/migrations/.*$"  # Exclude migrations
     -   id: trailing-whitespace
 -   repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
     rev: v9.11.0
@@ -23,6 +24,7 @@ repos:
     rev: 24.1.1
     hooks:
     -   id: black
+        exclude: "^rebook/app/migrations/.*$"  # Exclude migrations
 -   repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.1.14
     hooks:
@@ -33,6 +35,7 @@ repos:
     hooks:
     -   id: mypy
         args: [ --config-file, pyproject.toml ]
+        exclude: "^rebook/app/migrations/.*$"  # Exclude migrations
         additional_dependencies:
             [
                 types-python-dateutil==2.8.19.14,
