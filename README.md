@@ -23,12 +23,20 @@ Rebook is a website allowing students to resell school books to each other.
 docker compose up -d
 ```
 
+In local the project is accessible in http://0.0.0.0:8000 and the admin panel is accessible in http://0.0.0.0:8000/admin
+
 ## Use Django manager script
 
 ### To migrate Django database
 
 ```bash
 docker compose exec rebook python manage.py migrate
+```
+
+### To make migration of Django database
+
+```bash
+docker compose exec rebook python manage.py makemigrations
 ```
 
 ### To create a admin user for the Django app
