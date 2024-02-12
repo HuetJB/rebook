@@ -27,6 +27,12 @@ In local the project is accessible in http://0.0.0.0:8000 and the admin panel is
 
 ## Use Django manager script
 
+### To run Django test
+
+```bash
+docker compose exec rebook python manage.py test
+```
+
 ### To migrate Django database
 
 ```bash
