@@ -28,7 +28,8 @@ jobs:
           image-ref: '${{ env.DOCKER_IMAGE }}'
           exit-code: '1'
           ignore-unfixed: true
-          format: 'sarif'
+          format: 'template'
+          template: '@/contrib/sarif.tpl'
           output: 'trivy-results.sarif'
 
       - name: Upload Trivy scan results to GitHub Security tab
