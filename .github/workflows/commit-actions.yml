@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Checkout of branch ${{ github.ref_name }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get docker image name
         run: echo "DOCKER_IMAGE=ghcr.io/aureprod/rebook:$(git describe --tags --match 'v[0-9]*.[0-9]*.[0-9]' --dirty --always)" >> $GITHUB_ENV
