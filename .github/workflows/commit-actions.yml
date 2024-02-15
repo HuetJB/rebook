@@ -8,13 +8,13 @@ jobs:
 
     steps:
       - name: Checkout of branch ${{ github.ref_name }}
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Get docker image name
         run: echo "DOCKER_IMAGE=ghcr.io/aureprod/rebook:$(git describe --tags --match 'v[0-9]*.[0-9]*.[0-9]' --dirty --always)" >> $GITHUB_ENV
 
       - name: Pre-commit code check
-        uses: pre-commit/action@v3.0.0
+        uses: pre-commit/action@v3.0.1
 
       - name: Log in to Docker registry
         run: docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.REBOOK_CI_PACKAGE_RW }}
@@ -23,19 +23,15 @@ jobs:
         run: docker build -t ${{ env.DOCKER_IMAGE }} --build-arg "PYTHON_VERSION=$(cat .python-version)" -f ./deploy/Dockerfile .
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
+        uses: aquasecurity/trivy-action@0.17.0
         with:
-          image-ref: ${{ env.DOCKER_IMAGE }}
-          exit-code: '1'
-          ignore-unfixed: true
-          format: template
-          template: '@/contrib/sarif.tpl'
-          output: trivy-results.sarif
+          image-ref: '${{ env.DOCKER_IMAGE }}'
 
-      - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v2
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@0.17.0
         with:
-          sarif_file: 'trivy-results.sarif'
+          image-ref: '${{ env.DOCKER_IMAGE }}'
+          ignore-unfixed: true
 
       - name: Push Docker image
         run: docker push ${{ env.DOCKER_IMAGE }}

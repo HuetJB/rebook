@@ -23,12 +23,26 @@ Rebook is a website allowing students to resell school books to each other.
 docker compose up -d
 ```
 
+In local the project is accessible in http://0.0.0.0:8000 and the admin panel is accessible in http://0.0.0.0:8000/admin
+
 ## Use Django manager script
+
+### To run Django test
+
+```bash
+docker compose exec rebook python manage.py test
+```
 
 ### To migrate Django database
 
 ```bash
 docker compose exec rebook python manage.py migrate
+```
+
+### To make migration of Django database
+
+```bash
+docker compose exec rebook python manage.py makemigrations
 ```
 
 ### To create a admin user for the Django app
@@ -56,9 +70,7 @@ poetry run pre-commit run -a
 For install pre-commit in your local repository
 
 ```bash
-poetry install
-pre-commit install
-pre-commit installed at .git/hooks/commit-msg
+poetry run pre-commit install
 ```
 
 ## Docker compose

@@ -7,8 +7,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     POETRY_VIRTUALENVS_CREATE=false \
     POETRY_VERSION=1.6.1
 
-RUN apt update \
-    && apt upgrade -y \
+RUN apt-get update \
+    && apt-get upgrade -y \
 	&& apt-get install -y --no-install-recommends postgresql-client \
 	&& rm -rf /var/lib/apt/lists/*
 
