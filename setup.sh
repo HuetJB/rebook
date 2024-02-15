@@ -9,7 +9,7 @@ if [ ! -f .env ]; then
 
     # Define generated env vars
     export INSTANCE_NAME="${USER}-$(basename $(pwd))"
-    export APP_VERSION=dev
+    export APP_VERSION=dev_${INSTANCE_NAME}
     export APP_URL="localhost"
     export APP_SCHEME="http"
     export PYTHON_VERSION=$(cat .python-version | head -n1)
