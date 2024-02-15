@@ -24,7 +24,7 @@ class DetailView(DjangoDetailView):
     template_name = "detail.html"
 
 
-class ResultsView(DetailView):
+class ResultsView(DjangoDetailView):
     model = Question
     template_name = "results.html"
 
