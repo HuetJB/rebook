@@ -70,9 +70,7 @@ poetry run pre-commit run -a
 For install pre-commit in your local repository
 
 ```bash
-poetry install
-pre-commit install
-pre-commit installed at .git/hooks/commit-msg
+poetry run pre-commit install
 ```
 
 ## Docker compose
