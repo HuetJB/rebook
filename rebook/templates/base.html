@@ -7,19 +7,36 @@
 </head>
 
 <body>
+    <header>
+        <h3>Header</h3>
+
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+            {% else %}
+                <li><a href="{% url 'login' %}">Log In</a></li>
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+        </ul>
+
+        <hr>
+    </header>
+
     <main>
         {% block content %}
         {% endblock %}
     </main>
 
     <footer>
-        <br>
-        <hr>
+        <br><hr>
+
         <h3>Footer</h3>
 
         <ul>
-            <li>{{ app_name }} / {{ app_version }}</li>
-            <li><a href="{{ app_url }}">{{ app_url }}</a></li>
+            <li>Name : {{ app_name }}</li>
+            <li>Version : {{ app_version }}</li>
+            <li>Url : <a href="{{ app_url }}">{{ app_url }}</a></li>
         </ul>
     </footer>
 </body>

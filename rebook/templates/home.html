@@ -6,18 +6,4 @@
     <h1>Rebook{% if user.is_authenticated %}, welcome {{ user.username }}{% endif %}</h1>
 
     <p>Rebook is a web application that allows you to book a room in a hotel.</p>
-
-    {% if user.is_authenticated %}
-        <p><a href="{% url 'password_change' %}">Password Change</a></p>
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <button type="submit">Log Out</button>
-        </form>
-    {% else %}
-        <ul>
-            <li><a href="{% url 'password_reset' %}">Password Reset</a></li>
-            <li><a href="{% url 'login' %}">Log In</a></li>
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-        </ul>
-    {% endif %}
 {% endblock %}
