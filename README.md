@@ -117,3 +117,11 @@ Availables type :
 - `docs` Add documentation (README, JSdoc, comments, etc.)
 - `refactor` Change codebase without add feature or fix bug
 - `test` Add test
+
+## For all error with files access
+
+Execute this command if they are some error with files access, because the docker container is running with root user
+
+```bash
+sudo chown $USER -R rebook/
+```
