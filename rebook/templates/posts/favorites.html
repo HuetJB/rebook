@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Favorites Posts / {{ block.super }}{% endblock %}
+
+{% block content %}
+    <h1>Favorites Posts</h1>
+
+    {% include "posts/posts.html" %}
+{% endblock %}

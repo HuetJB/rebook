@@ -1,0 +1,37 @@
+{% if posts %}
+    <ul>
+        {% for post in posts %}
+            <li>
+                <a href="{% url 'post_detail' post.id %}">
+                    <div>
+                        <p>{{ post.title }}</p>
+                        <p>{{ post.description }}</p>
+                        <p>Book : {{ post.book_title }} ({{ post.book_author }})</p>
+                        <p>Seller : {{ post.seller }}</p>
+                        <p>Price : {{ post.price }} €</p>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    {% if is_paginated %}
+        <br>
+
+        <div>
+            <span>
+                <span>
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+                {% if page_obj.has_previous %}
+                    <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                {% endif %}
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                {% endif %}
+            </span>
+        </div>
+    {% endif %}
+{% else %}
+    <p>No books found !!!</p>
+{% endif %}
