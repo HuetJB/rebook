@@ -32,7 +32,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "accounts",
-    "books",
     "posts",
 ]
 
@@ -105,8 +104,6 @@ USE_TZ = True
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
-# STATIC_URL = "static/"
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "home"
@@ -119,8 +116,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = getenv("EMAIL_USER")
 EMAIL_HOST_PASSWORD = getenv("EMAIL_PASSWORD")
 
-MEDIA_URL = "static/"
-STATIC_URL = "static/images/"
+STATIC_URL = "static/"
 STATICFILES_DIRS = ("static", "static/images")
 
-IMAGES_FOLDER = f"{MEDIA_URL}images"
+IMAGES_FOLDER = "static/images"

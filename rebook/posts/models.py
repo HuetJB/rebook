@@ -1,8 +1,25 @@
 from accounts.models import UserProfile
-from books.models import Book
-from django.db.models import CASCADE, CharField, DateTimeField, FloatField, ForeignKey, ImageField, Model
+from django.db.models import (
+    CASCADE,
+    CharField,
+    DateField,
+    DateTimeField,
+    FloatField,
+    ForeignKey,
+    ImageField,
+    IntegerField,
+    Model,
+)
 
 from rebook.settings import IMAGES_FOLDER
+
+
+class Book(Model):
+    title = CharField(max_length=100)
+    description = CharField(max_length=1000)
+    author = CharField(max_length=100)
+    published_at = DateField()
+    pages = IntegerField()
 
 
 class Post(Model):
