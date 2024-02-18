@@ -15,7 +15,9 @@
             <li><a href="{% url 'home' %}">Home</a></li>
             {% if user.is_authenticated %}
                 <li><a href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'favorites_posts' %}">Favorites Posts</a></li>
+                <li><a href="{% url 'post_create' %}">Create Post</a></li>
+                <li><a href="{% url 'personnals_posts' %}">My Posts</a></li>
+                <li><a href="{% url 'favourites_posts' %}">My Favourites Posts</a></li>
             {% else %}
                 <li><a href="{% url 'login' %}">Log In</a></li>
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>

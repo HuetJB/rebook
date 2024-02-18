@@ -3,6 +3,18 @@
 {% block title %}Post / {{ block.super }}{% endblock %}
 
 {% block content %}
+    {% if user.is_authenticated %}
+    <form action="{% url 'post_favourite_action' post.id %}" method="POST">
+        {% csrf_token %}
+
+        {% if user in post.have_in_favourite.all %}
+            <button type="submit">Remove from favourites</button>
+        {% else %}
+            <button type="submit">Add to favourites</button>
+        {% endif %}
+    </form>
+    {% endif %}
+
     <h1>{{ post.title }}</h1>
 
     <p>{{ post.description }}</p>
