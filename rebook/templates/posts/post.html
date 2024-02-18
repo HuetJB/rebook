@@ -10,14 +10,9 @@
     <p>Seller : {{ post.seller }}</p>
     <p>Price : {{ post.price }} €</p>
 
-    <div>
-        <h2>Book : {{ post.book.title }}</h2>
-
-        <p>{{ post.book.description }}</p>
-        <p>Author: {{ post.book.author }}</p>
-        <p>Pages: {{ post.book.pages }}</p>
-        <p>Published: {{ post.book.published_at|date:"d-m-Y" }}</p>
-    </div>
+    <p>Book : {{ post.book_title }}</p>
+    <p>Author: {{ post.book_author }}</p>
+    <p>Published: {{ post.book_published_at|date:"d-m-Y" }}</p>
 
     {% if post.image_1 %}<img src="{{ post.image_1.url }}" alt="{{ post.book.title }} first image">{% endif %}
     {% if post.image_2 %}<img src="{{ post.image_2.url }}" alt="{{ post.book.title }} second image">{% endif %}
