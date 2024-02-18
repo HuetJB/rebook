@@ -5,5 +5,19 @@
 {% block content %}
     <h1>Rebook{% if user.is_authenticated %}, welcome {{ user.username }}{% endif %}</h1>
 
-    <p>Rebook is a web application that allows you to book a room in a hotel.</p>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <div>
+                    <p>
+                        <a href="{% url 'post_detail' post.id %}">{{ post.title }}</a>
+                    </p>
+                    <p>{{ post.description }}</p>
+                    <p>Book : {{ post.book.title }} ({{ post.book.author }})</p>
+                    <p>Seller : {{ post.seller }}</p>
+                    <p>Price : {{ post.price }}€</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}
