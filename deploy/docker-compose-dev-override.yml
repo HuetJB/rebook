@@ -2,6 +2,7 @@ version: '3'
 
 services:
   rebook:
+    restart: no
     build:
       context: .
       dockerfile: deploy/Dockerfile
@@ -12,3 +13,6 @@ services:
       - ./rebook:/usr/src/app/
     ports:
       - 5678:5678 # port for vscode debugger
+
+  db:
+    restart: no
