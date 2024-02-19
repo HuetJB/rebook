@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "Rebook"
+name = "rebook"
 version = "1.0.0"
 description = "Website for refund school books"
 authors = ["AureProd <aureprod0@gmail.com>"]
