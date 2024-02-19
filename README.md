@@ -8,6 +8,7 @@ Rebook is a website allowing students to resell school books to each other.
 - [docker](https://docs.docker.com/engine/install/ubuntu/)
 - [python](https://vegastack.com/tutorials/how-to-install-python-3-11-on-ubuntu-22-04/)
 - [poetry](https://pypi.org/project/poetry/)
+- [pyenv](https://github.com/pyenv/pyenv)
 
 ## Quick start
 
