@@ -113,6 +113,7 @@ Availables type :
 
 - `feat` Add a feature
 - `fix` Fix a bug
+- `clean` Clean the codebase
 - `ci` Change a file or add feature in link with the deployment of the application (Jenkins, Travis, Ansible, gitlabCI, npm, grunt, gulp, webpack, etc.)
 - `docs` Add documentation (README, JSdoc, comments, etc.)
 - `refactor` Change codebase without add feature or fix bug
