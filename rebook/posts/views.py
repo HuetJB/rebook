@@ -1,7 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
-from django.urls import reverse, reverse_lazy
+from django.shortcuts import get_object_or_404, redirect
+from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, DetailView, ListView
 
@@ -58,7 +57,7 @@ class CreatePostView(CreateView):
 
 
 @login_required
-def favourite_a_post(request, post_id):
+def favourite_post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
 
     if post.have_in_favourite.filter(id=request.user.id).exists():
@@ -66,4 +65,11 @@ def favourite_a_post(request, post_id):
     else:
         post.have_in_favourite.add(request.user)
 
-    return HttpResponseRedirect(reverse("post_detail", kwargs={"pk": id}))
+    return redirect("post_detail", pk=post_id)
+
+
+@login_required
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    post.delete()
+    return redirect("home")

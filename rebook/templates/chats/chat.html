@@ -3,6 +3,12 @@
 {% block title %}My Chats / {{ block.super }}{% endblock %}
 
 {% block content %}
+    <form action="{% url 'delete_chat' chat.id %}" method="POST">
+        {% csrf_token %}
+
+        <button type="submit">Delete the chat</button>
+    </form>
+
     <h1>
         {% if chat.purchaser == user %}
             Chat with {{ chat.post.seller.username }}

@@ -4,26 +4,34 @@
 
 {% block content %}
     {% if user.is_authenticated %}
-        <form action="{% url 'favourite_a_post' post.id %}" method="POST">
-            {% csrf_token %}
-
-            <button type="submit">
-                {% if user in post.have_in_favourite.all %}
-                    Remove from favourites
-                {% else %}
-                    Add to favourites
-                {% endif %}
-            </button>
-        </form>
-
-        {% if user != post.seller and user not in post.get_purchasers %}
-            <br>
-
-            <form action="{% url 'create_chat_from_post' post.id %}" method="POST">
+        {% if user == post.seller %}
+            <form action="{% url 'delete_post' post.id %}" method="POST">
                 {% csrf_token %}
 
-                <button type="submit">Send message</button>
+                <button type="submit">Delete the post</button>
             </form>
+        {% else %}
+            <form action="{% url 'favourite_post' post.id %}" method="POST">
+                {% csrf_token %}
+
+                <button type="submit">
+                    {% if user in post.have_in_favourite.all %}
+                        Remove from favourites
+                    {% else %}
+                        Add to favourites
+                    {% endif %}
+                </button>
+            </form>
+
+            {% if user not in post.get_purchasers %}
+                <br>
+
+                <form action="{% url 'create_chat_from_post' post.id %}" method="POST">
+                    {% csrf_token %}
+
+                    <button type="submit">Send message</button>
+                </form>
+            {% endif %}
         {% endif %}
     {% endif %}
 
