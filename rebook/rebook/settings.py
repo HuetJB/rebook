@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "accounts",
     "posts",
+    "chats",
 ]
 
 MIDDLEWARE = [

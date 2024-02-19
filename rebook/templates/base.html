@@ -18,13 +18,16 @@
                 <li><a href="{% url 'post_create' %}">Create Post</a></li>
                 <li><a href="{% url 'personnals_posts' %}">My Posts</a></li>
                 <li><a href="{% url 'favourites_posts' %}">My Favourites Posts</a></li>
+                <li><a href="{% url 'personals_chats' %}">My Chats</a></li>
             {% else %}
                 <li><a href="{% url 'login' %}">Log In</a></li>
                 <li><a href="{% url 'signup' %}">Sign Up</a></li>
             {% endif %}
         </ul>
 
-        <hr>
+        {% include "registration/logout.html" %}
+
+        <br><hr>
     </header>
 
     <main>
@@ -38,6 +41,7 @@
         <h3>Footer</h3>
 
         <ul>
+            <li>Username : {{ user.username }}</li>
             <li>Name : {{ app_name }}</li>
             <li>Version : {{ app_version }}</li>
         </ul>

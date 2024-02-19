@@ -30,5 +30,8 @@ class Post(Model):
     image_2 = ImageField(upload_to=IMAGES_FOLDER, blank=True, null=True)
     image_3 = ImageField(upload_to=IMAGES_FOLDER, blank=True, null=True)
 
-    def __unicode__(self):
-        return f"{self.title} - {self.book_title} ({self.book_author}) - {self.seller.__unicode__()}"
+    def __str__(self):
+        return f"{self.title} - {self.book_title} ({self.book_author}) - {self.seller}"
+
+    def get_purchasers(self):
+        return [chat.purchaser for chat in self.chats.all()]

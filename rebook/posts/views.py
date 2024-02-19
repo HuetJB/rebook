@@ -58,8 +58,8 @@ class CreatePostView(CreateView):
 
 
 @login_required
-def post_favourite_action(request, id):
-    post = get_object_or_404(Post, id=id)
+def favourite_a_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
 
     if post.have_in_favourite.filter(id=request.user.id).exists():
         post.have_in_favourite.remove(request.user)

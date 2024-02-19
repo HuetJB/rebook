@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}My Chats / {{ block.super }}{% endblock %}
+
+{% block content %}
+    <h1>My Chats</h1>
+
+    {% if chats %}
+        <ul>
+            {% for chat in chats %}
+                <li>
+                    <a href="{% url 'chat_detail' chat.id %}">
+                        <div>
+                            <p>
+                                {% if chat.purchaser == user %}
+                                    Chat with {{ chat.post.seller.username }}
+                                {% else %}
+                                    Chat with {{ chat.purchaser.username }}
+                                {% endif %}
+                            </p>
+                            <p>For post {{ chat.post.title }}</p>
+                        </div>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+
+        {% if is_paginated %}
+            <br>
+
+            <div>
+                <span>
+                    <span>
+                        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                    </span>
+
+                    {% if page_obj.has_previous %}
+                        <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                    {% endif %}
+
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                    {% endif %}
+                </span>
+            </div>
+        {% endif %}
+    {% else %}
+        <p>No chats found !!!</p>
+    {% endif %}
+{% endblock %}
