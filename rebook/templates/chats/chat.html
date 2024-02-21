@@ -40,4 +40,13 @@
     {% else %}
         <p>No messages found !!!</p>
     {% endif %}
+
+    <form action="{% url 'send_message' chat.id %}" method="POST">
+        {% csrf_token %}
+
+        <label for="message">Message</label>
+        <input type="text" id="message" name="message" required>
+
+        <button type="submit">Send message</button>
+    </form>
 {% endblock %}

@@ -6,7 +6,7 @@ from django.utils.decorators import method_decorator
 from django.views.generic import DetailView, ListView
 from posts.models import Post
 
-from .models import Chat
+from .models import Chat, Message
 
 
 @method_decorator(login_required, name="dispatch")
@@ -47,3 +47,19 @@ def delete_chat(request, chat_id):
     chat = get_object_or_404(Chat, pk=chat_id)
     chat.delete()
     return redirect("personals_chats")
+
+
+# @login_required
+# def get_chat_messages(request, chat_id):
+#     chat = get_object_or_404(Chat, pk=chat_id)
+#     messages: BaseManager[Message] = chat.messages
+#     return JsonResponse({"messages": list(messages.values())})
+
+
+@login_required
+def send_message(request, chat_id):
+    chat = get_object_or_404(Chat, pk=chat_id)
+
+    Message.objects.create(chat=chat, sender=request.user, message=request.POST["message"])
+
+    return redirect("chat_detail", pk=chat_id)
