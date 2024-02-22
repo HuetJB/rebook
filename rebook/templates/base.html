@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 
 <html>
@@ -8,6 +10,8 @@
 </head>
 
 <body>
+    <script src="{% static 'js/main.js' %}"></script>
+
     <header>
         <h3>Header</h3>
 
@@ -25,7 +29,9 @@
             {% endif %}
         </ul>
 
-        {% include "registration/logout.html" %}
+        {% if user.is_authenticated %}
+            {% include "registration/logout.html" %}
+        {% endif %}
 
         <br><hr>
     </header>

@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -62,10 +63,12 @@ def favourite_post(request, post_id):
 
     if post.have_in_favourite.filter(id=request.user.id).exists():
         post.have_in_favourite.remove(request.user)
+        favourite = False
     else:
         post.have_in_favourite.add(request.user)
+        favourite = True
 
-    return redirect("post_detail", pk=post_id)
+    return JsonResponse({"favourite_status": favourite})
 
 
 @login_required
