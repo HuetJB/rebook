@@ -2,6 +2,8 @@
 
 Rebook is a website allowing students to resell school books to each other.
 
+[Link to graphical charter](./assets/graphical_charter.md)
+
 ## Dev Requirements
 
 - [git](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git)

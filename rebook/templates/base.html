@@ -6,13 +6,22 @@
 
 <head>
     <meta charset="utf-8">
+
     <title>{% block title %}{{ app_name }}{% endblock %}</title>
+
+    {% comment %} Import ubuntu font from google {% endcomment %}
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    {% comment %} define the favicon {% endcomment %}
+    <link rel="icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon">
 </head>
 
 <body>
     <script src="{% static 'js/main.js' %}"></script>
 
     <header>
+        <img src="{% static 'icons/logo.svg' %}" alt="logo" width="200">
+
         <h3>Header</h3>
 
         <ul>
