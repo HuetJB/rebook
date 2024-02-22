@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}My Posts / {{ block.super }}{% endblock %}
+
+{% block content %}
+    <h1>My Posts</h1>
+
+    {% include "posts/posts.html" %}
+{% endblock %}

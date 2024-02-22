@@ -4,6 +4,7 @@ services:
   rebook:
     image: ${REBOOK_IMAGE}
     restart: always
+    stop_signal: SIGKILL
     environment:
       DB_HOST: db
       DB_PORT: "5432"
@@ -16,6 +17,7 @@ services:
 
   db:
     image: postgres:15
+    restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     environment:

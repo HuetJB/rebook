@@ -5,5 +5,5 @@ from django.db.models import DateField
 class UserProfile(AbstractUser):
     birth_date = DateField(null=True, blank=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.username

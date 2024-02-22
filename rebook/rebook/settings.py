@@ -24,6 +24,7 @@ ALLOWED_HOSTS = getenv("DJANGO_ALLOWED_HOSTS", default="").split(" ")
 AUTH_USER_MODEL = "accounts.UserProfile"
 
 INSTALLED_APPS = [
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -32,6 +33,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "accounts",
+    "posts",
+    "chats",
 ]
 
 MIDDLEWARE = [
@@ -64,6 +67,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "rebook.wsgi.application"
+ASGI_APPLICATION = "rebook.asgi.application"
 
 DATABASES = {
     "default": {
@@ -103,8 +107,6 @@ USE_TZ = True
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 
-STATIC_URL = "static/"
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "home"
@@ -116,3 +118,14 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = getenv("EMAIL_USER")
 EMAIL_HOST_PASSWORD = getenv("EMAIL_PASSWORD")
+
+STATIC_URL = "static/"
+STATICFILES_DIRS = ("static", "static/images")
+
+IMAGES_FOLDER = "static/images"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}

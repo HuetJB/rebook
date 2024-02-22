@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Post / {{ block.super }}{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if user == post.seller %}
+            <form action="{% url 'delete_post' post.id %}" method="POST">
+                {% csrf_token %}
+
+                <button type="submit">Delete the post</button>
+            </form>
+        {% else %}
+            <button id="favouritesButton" url="{% url 'favourite_post' post.id %}">
+                {% if user in post.have_in_favourite.all %}
+                    Remove from favourites
+                {% else %}
+                    Add to favourites
+                {% endif %}
+            </button>
+
+            {% if user not in post.get_purchasers %}
+                <br><br>
+
+                <form action="{% url 'create_chat_from_post' post.id %}" method="POST">
+                    {% csrf_token %}
+
+                    <button type="submit">Send message</button>
+                </form>
+            {% endif %}
+        {% endif %}
+    {% endif %}
+
+    <h1>{{ post.title }}</h1>
+
+    <p>{{ post.description }}</p>
+
+    <p>Seller : {{ post.seller }}</p>
+    <p>Price : {{ post.price }} €</p>
+
+    <p>Book : {{ post.book_title }}</p>
+    <p>Author: {{ post.book_author }}</p>
+    <p>Published: {{ post.book_published_at|date:"d-m-Y" }}</p>
+
+    {% if post.image_1 %}<img src="{{ post.image_1.url }}" alt="{{ post.book.title }} first image">{% endif %}
+    {% if post.image_2 %}<img src="{{ post.image_2.url }}" alt="{{ post.book.title }} second image">{% endif %}
+    {% if post.image_3 %}<img src="{{ post.image_3.url }}" alt="{{ post.book.title }} third image">{% endif %}
+
+    <script src="{% static 'js/posts/post.js' %}"></script>
+{% endblock %}

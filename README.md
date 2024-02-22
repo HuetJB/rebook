@@ -2,12 +2,15 @@
 
 Rebook is a website allowing students to resell school books to each other.
 
+[Link to graphical charter](./assets/graphical_charter.md)
+
 ## Dev Requirements
 
 - [git](https://git-scm.com/book/fr/v2/D%C3%A9marrage-rapide-Installation-de-Git)
 - [docker](https://docs.docker.com/engine/install/ubuntu/)
 - [python](https://vegastack.com/tutorials/how-to-install-python-3-11-on-ubuntu-22-04/)
 - [poetry](https://pypi.org/project/poetry/)
+- [pyenv](https://github.com/pyenv/pyenv)
 
 ## Quick start
 
@@ -113,7 +116,16 @@ Availables type :
 
 - `feat` Add a feature
 - `fix` Fix a bug
+- `clean` Clean the codebase
 - `ci` Change a file or add feature in link with the deployment of the application (Jenkins, Travis, Ansible, gitlabCI, npm, grunt, gulp, webpack, etc.)
 - `docs` Add documentation (README, JSdoc, comments, etc.)
 - `refactor` Change codebase without add feature or fix bug
 - `test` Add test
+
+## For all error with files access
+
+Execute this command if they are some error with files access, because the docker container is running with root user
+
+```bash
+sudo chown $USER -R rebook/
+```

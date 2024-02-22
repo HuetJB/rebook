@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}My Chats / {{ block.super }}{% endblock %}
+
+{% block content %}
+    <form action="{% url 'delete_chat' chat.id %}" method="POST">
+        {% csrf_token %}
+
+        <button type="submit">Delete the chat</button>
+    </form>
+
+    <h1 id="chatId" value="{{ chat.id }}">
+        Chat with
+        {% if chat.purchaser == user %}
+            {{ chat.post.seller.username }}
+        {% else %}
+            {{ chat.purchaser.username }}
+        {% endif %}
+    </h1>
+
+    <p>For post : <a href="{% url 'post_detail' chat.post.id %}">{{ chat.post.title }}</a></p>
+
+    <h2>Messages</h2>
+
+    <ul id="chatMessages" username="{{ user.username }}" {% if not chat.messages.all %}style="display: none;"{% endif %}></ul>
+
+    <p id="noChatMessagesError" {% if chat.messages.all %}style="display: none;"{% endif %}>No messages found !!!</p>
+
+    <label for="chatMessageInput">Send message : </label>
+    <input type="text" id="chatMessageInput">
+
+    <button id="chatMessageSend">Send message</button>
+
+    <script src="{% static 'js/chats/chat.js' %}"></script>
+{% endblock %}

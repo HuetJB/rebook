@@ -23,6 +23,7 @@ module.exports = {
 				'feat',
 				'fix',
 				'refactor',
+				'clean',
 				'test',
 			],
 		],
@@ -53,6 +54,12 @@ module.exports = {
 						title: 'Code Refactoring',
 						emoji: '📦',
 					},
+					clean: {
+						description:
+							'A code cleanning that neither fixes a bug nor adds a feature',
+						title: 'Code Cleanning',
+						emoji: '🧹',
+					},
 					test: {
 						description: 'Adding missing tests or correcting existing tests',
 						title: 'Tests',
@@ -62,7 +69,7 @@ module.exports = {
 						description:
 							'Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)',
 						title: 'Continuous Integrations',
-						emoji: '⚙️',
+						emoji: '🦺',
 					},
 				},
 			},

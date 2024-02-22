@@ -17,7 +17,6 @@
         "wayou.vscode-todo-highlight",
         "redhat.vscode-yaml",
         "simonsiefke.svg-preview",
-        "bierner.markdown-mermaid",
-        "matangover.mypy"
+        "bierner.markdown-mermaid"
     ]
 }

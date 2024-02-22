@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "Rebook"
+name = "rebook"
 version = "1.0.0"
 description = "Website for refund school books"
 authors = ["AureProd <aureprod0@gmail.com>"]
@@ -8,6 +8,9 @@ authors = ["AureProd <aureprod0@gmail.com>"]
 python = "3.11.3"
 django = "^5.0.1"
 psycopg2-binary = "^2.9.9"
+pillow = "^10.2.0"
+channels = "^4.0.0"
+daphne = "^4.1.0"
 
 [tool.poetry.group.lint.dependencies]
 pre-commit = "^3.4.0"
