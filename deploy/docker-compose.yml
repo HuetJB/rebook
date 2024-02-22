@@ -4,6 +4,7 @@ services:
   rebook:
     image: ${REBOOK_IMAGE}
     restart: always
+    stop_signal: SIGKILL
     environment:
       DB_HOST: db
       DB_PORT: "5432"
