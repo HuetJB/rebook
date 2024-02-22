@@ -24,6 +24,7 @@ ALLOWED_HOSTS = getenv("DJANGO_ALLOWED_HOSTS", default="").split(" ")
 AUTH_USER_MODEL = "accounts.UserProfile"
 
 INSTALLED_APPS = [
+    "daphne",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -66,6 +67,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "rebook.wsgi.application"
+ASGI_APPLICATION = "rebook.asgi.application"
 
 DATABASES = {
     "default": {
@@ -121,3 +123,9 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = ("static", "static/images")
 
 IMAGES_FOLDER = "static/images"
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer",
+    },
+}

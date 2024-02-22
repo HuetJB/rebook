@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}My Chats / {{ block.super }}{% endblock %}
 
 {% block content %}
@@ -9,11 +11,12 @@
         <button type="submit">Delete the chat</button>
     </form>
 
-    <h1>
+    <h1 id="chatId" value="{{ chat.id }}">
+        Chat with
         {% if chat.purchaser == user %}
-            Chat with {{ chat.post.seller.username }}
+            {{ chat.post.seller.username }}
         {% else %}
-            Chat with {{ chat.purchaser.username }}
+            {{ chat.purchaser.username }}
         {% endif %}
     </h1>
 
@@ -21,32 +24,28 @@
 
     <h2>Messages</h2>
 
-    {% if chat.messages.all %}
-        <ul>
-            {% for message in chat.messages.all %}
-                <li>
-                    <p>{{ message.message }}</p>
-                    <p>
-                        {% if message.sender == user %}
-                            Sender : You
-                        {% else %}
-                            Sender : {{ message.sender.username }}
-                        {% endif %}
-                    </p>
-                    <p>Send at : {{ message.send_at }}</p>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No messages found !!!</p>
-    {% endif %}
+    <ul id="chatMessages" username="{{ user.username }}" {% if not chat.messages.all %}style="display: none;"{% endif %}>
+        {% for message in chat.messages.all %}
+            <li>
+                <p>{{ message.message }}</p>
+                <p>Sender :
+                    {% if message.sender == user %}
+                        You
+                    {% else %}
+                        {{ message.sender.username }}
+                    {% endif %}
+                </p>
+                <p>Send at : {{ message.get_send_at }}</p>
+            </li>
+        {% endfor %}
+    </ul>
 
-    <form action="{% url 'send_message' chat.id %}" method="POST">
-        {% csrf_token %}
+    <p id="noChatMessagesError" {% if chat.messages.all %}style="display: none;"{% endif %}>No messages found !!!</p>
 
-        <label for="message">Message</label>
-        <input type="text" id="message" name="message" required>
+    <label for="chatMessageInput">Send message : </label>
+    <input type="text" id="chatMessageInput">
 
-        <button type="submit">Send message</button>
-    </form>
+    <button id="chatMessageSend">Send message</button>
+
+    <script src="{% static 'chats/chat.js' %}"></script>
 {% endblock %}

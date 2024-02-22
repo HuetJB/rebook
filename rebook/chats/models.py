@@ -8,8 +8,11 @@ class Chat(Model):
     purchaser = ForeignKey(UserProfile, on_delete=CASCADE)
     post = ForeignKey(Post, on_delete=CASCADE, related_name="chats")
 
+    def get_seller(self):
+        return self.post.seller
+
     def __str__(self):
-        return f"{self.post} - {self.seller} - {self.purchaser}"
+        return f"{self.post} - {self.get_seller()} - {self.purchaser}"
 
 
 class Message(Model):
@@ -20,3 +23,9 @@ class Message(Model):
 
     def __str__(self):
         return self.message
+
+    def get_send_at(self) -> str:
+        return self.send_at.strftime("%Y-%m-%d %H:%M:%S")
+
+    def to_dict(self) -> dict:
+        return {"sender": self.sender.username, "message": self.message, "send_at": self.get_send_at()}
