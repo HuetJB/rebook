@@ -24,23 +24,9 @@
 
     <h2>Messages</h2>
 
-    <ul id="chatMessages" username="{{ user.username }}" {% if not chat.messages.all %}style="display: none;"{% endif %}>
-        {% for message in chat.messages.all %}
-            <li>
-                <p>{{ message.message }}</p>
-                <p>Sender :
-                    {% if message.sender == user %}
-                        You
-                    {% else %}
-                        {{ message.sender.username }}
-                    {% endif %}
-                </p>
-                <p>Send at : {{ message.get_send_at }}</p>
-            </li>
-        {% endfor %}
-    </ul>
+    <ul id="chatMessages" username="{{ user.username }}" style="display: none;"></ul>
 
-    <p id="noChatMessagesError" {% if chat.messages.all %}style="display: none;"{% endif %}>No messages found !!!</p>
+    <p id="noChatMessagesError">No messages found !!!</p>
 
     <label for="chatMessageInput">Send message : </label>
     <input type="text" id="chatMessageInput">

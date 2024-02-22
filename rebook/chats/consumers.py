@@ -34,6 +34,12 @@ class ChatsConsumer(WebsocketConsumer):
                 self.chat_group_name,
                 self.channel_name,
             )
+
+            self.send(
+                json_dumps(
+                    {"type": "chat_messages", "messages": [message.to_dict() for message in self.chat.messages.all()]}
+                )
+            )
         else:
             self.close()
 
@@ -58,4 +64,7 @@ class ChatsConsumer(WebsocketConsumer):
         )
 
     def chat_message(self, event):
+        self.send(text_data=json_dumps(event))
+
+    def chat_messages(self, event):
         self.send(text_data=json_dumps(event))

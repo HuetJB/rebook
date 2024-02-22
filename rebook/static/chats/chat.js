@@ -72,6 +72,11 @@ function connect() {
                 chatMessages.addMessage(data.message.sender, data.message.message, data.message.send_at);
                 chatMessages.show();
                 break;
+            case "chat_messages":
+                data.messages.forEach(function(message) {
+                    chatMessages.addMessage(message.sender, message.message, message.send_at);
+                });
+                chatMessages.show();
             default:
                 console.error("Unknown message type !");
                 break;
