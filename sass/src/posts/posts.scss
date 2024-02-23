@@ -65,7 +65,7 @@ div#pagination {
         list-style: none;
         padding: 0;
 
-        a, li.active {
+        a, li.active, li.disabled {
             margin: 0 10px;
             display: flex;
             justify-content: center;
@@ -90,14 +90,11 @@ div#pagination {
                 background-color: $dark_blue;
                 color: $white;
             }
+        }
 
-            &.dots {
-                width: 40px;
-                height: 40px;
-                border: none;
-                background-color: $beige;
-                color: $dark_blue;
-            }
+        li.disabled {
+            pointer-events: none;
+            opacity: 0.5;
         }
     }
 }

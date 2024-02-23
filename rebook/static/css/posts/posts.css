@@ -56,7 +56,7 @@ div#pagination ul {
   list-style: none;
   padding: 0;
 }
-div#pagination ul a, div#pagination ul li.active {
+div#pagination ul a, div#pagination ul li.active, div#pagination ul li.disabled {
   margin: 0 10px;
   display: flex;
   justify-content: center;
@@ -67,24 +67,21 @@ div#pagination ul a, div#pagination ul li.active {
   border-radius: 50%;
   background-color: #f0eadd;
 }
-div#pagination ul a:hover, div#pagination ul li.active:hover {
+div#pagination ul a:hover, div#pagination ul li.active:hover, div#pagination ul li.disabled:hover {
   color: #f1f1e6;
   background-color: #232a43;
 }
-div#pagination ul a.previous, div#pagination ul a.next, div#pagination ul li.active.previous, div#pagination ul li.active.next {
+div#pagination ul a.previous, div#pagination ul a.next, div#pagination ul li.active.previous, div#pagination ul li.active.next, div#pagination ul li.disabled.previous, div#pagination ul li.disabled.next {
   width: 50px;
   height: 50px;
 }
-div#pagination ul a.active, div#pagination ul li.active.active {
+div#pagination ul a.active, div#pagination ul li.active.active, div#pagination ul li.disabled.active {
   background-color: #232a43;
   color: #f1f1e6;
 }
-div#pagination ul a.dots, div#pagination ul li.active.dots {
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: #f0eadd;
-  color: #232a43;
+div#pagination ul li.disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 /*# sourceMappingURL=posts.css.map */

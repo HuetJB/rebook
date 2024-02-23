@@ -24,6 +24,7 @@ button {
   border: none;
   cursor: pointer;
   outline: none;
+  color: unset;
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -161,19 +162,42 @@ main form {
   width: 60%;
   text-align: center;
 }
-main form > div > input {
-  height: 30px;
-  width: 50%;
+main form > div {
+  display: flex;
+  justify-content: space-between;
   margin: auto;
+  width: 50%;
   margin-bottom: 20px;
+  text-wrap: nowrap;
+  align-items: baseline;
+}
+main form > div > label {
+  width: 50%;
+  text-align: left;
+}
+main form > div > input, main form > div > textarea {
+  font-size: 100%;
+  width: 100%;
+  height: 30px;
   border-radius: 7px;
   text-align: center;
+  border: 1px solid #232a43;
 }
-main form > div > input:required {
+main form > div > input:required, main form > div > textarea:required {
   border: 1px solid red;
 }
-main form > div > input:required:valid {
+main form > div > input:required:valid, main form > div > textarea:required:valid {
   border: 1px solid #232a43;
+}
+main form > div > input[type=file] {
+  height: 100%;
+  padding: 5px;
+}
+main form > div > textarea {
+  padding: 7px;
+  resize: none;
+  height: 100px;
+  text-align: left;
 }
 main form button {
   width: 20%;

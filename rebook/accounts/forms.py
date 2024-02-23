@@ -15,7 +15,7 @@ class UserLoginForm(AuthenticationForm):
 class SignupForm(UserCreationForm):
     username = UsernameField(widget=TextInput(attrs={"placeholder": "Username"}), label="", required=True)
     email = EmailField(max_length=200, widget=TextInput(attrs={"placeholder": "Email"}), label="", required=True)
-    birth_date = DateField(widget=DateInput(attrs=dict(type="date")), label="", required=True)
+    birth_date = DateField(widget=DateInput(attrs={"type": "date"}), label="Birth Date ", required=True)
     password1 = CharField(widget=PasswordInput(attrs={"placeholder": "Password"}), label="", required=True)
     password2 = CharField(widget=PasswordInput(attrs={"placeholder": "Password Confirmation"}), label="", required=True)
 

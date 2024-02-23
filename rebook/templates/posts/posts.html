@@ -26,6 +26,12 @@
                             <i class="fa-solid fa-caret-left"></i>
                         </a>
                     </li>
+                {% else %}
+                    <li class="disabled">
+                        <span>
+                            <i class="fa-solid fa-caret-left"></i>
+                        </span>
+                    </li>
                 {% endif %}
 
                 {% for num in page_obj.paginator.page_range %}
@@ -34,15 +40,23 @@
                             <span>{{ num }}</span>
                         </li>
                     {% else %}
-                        {% if num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                        {% if num > page_obj.number|add:'-2' and num < page_obj.number|add:'2' %}
                             <li class="page">
                                 <a href="?page={{ num }}" title="Page {{ num }}">
                                     <span>{{ num }}</span>
                                 </a>
                             </li>
-                        {% elif num == page_obj.number|add:'-3' %}
-                            <li class="dots">
-                                <span>...</span>
+                        {% elif page_obj.number == 1 and num < page_obj.number|add:'3' %}
+                            <li class="page">
+                                <a href="?page={{ num }}" title="Page {{ num }}">
+                                    <span>{{ num }}</span>
+                                </a>
+                            </li>
+                        {% elif page_obj.number == page_obj.paginator.num_pages and num > page_obj.number|add:'-3' %}
+                            <li class="page">
+                                <a href="?page={{ num }}" title="Page {{ num }}">
+                                    <span>{{ num }}</span>
+                                </a>
                             </li>
                         {% endif %}
                     {% endif %}
@@ -53,6 +67,12 @@
                         <a href="?page={{ page_obj.next_page_number }}" title="Next page">
                             <i class="fa-solid fa-caret-right"></i>
                         </a>
+                    </li>
+                {% else %}
+                    <li class="disabled">
+                        <span>
+                            <i class="fa-solid fa-caret-right"></i>
+                        </span>
                     </li>
                 {% endif %}
             </ul>

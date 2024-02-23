@@ -19,12 +19,24 @@
 
         <div id="email">
             <span>Email :</span>
-            <span>{{ user.email }}</span>
+            <span>
+                {% if user.email %}
+                    {{ user.email }}
+                {% else %}
+                    ...
+                {% endif %}
+            </span>
         </div>
 
         <div id="bithDate">
             <span>Birth Date :</span>
-            <span>{{ user.get_birth_date }}</span>
+            <span>
+                {% if user.get_birth_date %}
+                    {{ user.get_birth_date }}
+                {% else %}
+                    ...
+                {% endif %}
+            </span>
         </div>
     </div>
 
