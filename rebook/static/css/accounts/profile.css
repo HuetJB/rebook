@@ -1,0 +1,21 @@
+div#profileInfos {
+  margin: 50px auto;
+  width: 30%;
+}
+div#profileInfos > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 150%;
+  margin-bottom: 20px;
+}
+
+div#changePassword {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+div#changePassword a {
+  text-align: center;
+}
+
+/*# sourceMappingURL=profile.css.map */

@@ -1,9 +1,19 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}Home / {{ block.super }}{% endblock %}
 
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/posts/posts.css' %}">
+{% endblock %}
+
 {% block content %}
-    <h1>Rebook{% if user.is_authenticated %}, welcome {{ user.username }}{% endif %}</h1>
+    <h1>Home, welcome to Rebook website</h1>
+
+    <p>
+        This website is a relationnal website to resell yours studies books.
+    </p>
 
     {% include "posts/posts.html" %}
 {% endblock %}

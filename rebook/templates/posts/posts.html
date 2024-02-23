@@ -1,37 +1,61 @@
 {% if posts %}
-    <ul>
+    <div id="posts">
         {% for post in posts %}
-            <li>
-                <a href="{% url 'post_detail' post.id %}">
-                    <div>
-                        <p>{{ post.title }}</p>
-                        <p>{{ post.description }}</p>
-                        <p>Book : {{ post.book_title }} ({{ post.book_author }})</p>
-                        <p>Seller : {{ post.seller }}</p>
-                        <p>Price : {{ post.price }} €</p>
-                    </div>
-                </a>
-            </li>
+            <div id="post-{{ post.id }}">
+                <div>
+                    <a href="{% url 'post_detail' post.id %}" title="Post {{ post.title }}">
+                        <div>
+                            <span class="postTitle">{{ post.title }}</span>
+                            <span>{{ post.description }}</span>
+                            <span>Book : {{ post.book_title }} ({{ post.book_author }})</span>
+                            <span>Seller : {{ post.seller }}</span>
+                            <span>Price : {{ post.price }} €</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 
     {% if is_paginated %}
-        <br>
-
-        <div>
-            <span>
-                <span>
-                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                </span>
-
+        <div id="pagination">
+            <ul>
                 {% if page_obj.has_previous %}
-                    <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+                    <li class="previous">
+                        <a href="?page={{ page_obj.previous_page_number }}" title="Previous page">
+                            <i class="fa-solid fa-caret-left"></i>
+                        </a>
+                    </li>
                 {% endif %}
+
+                {% for num in page_obj.paginator.page_range %}
+                    {% if page_obj.number == num %}
+                        <li class="page active" title="Page {{ num }}">
+                            <span>{{ num }}</span>
+                        </li>
+                    {% else %}
+                        {% if num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                            <li class="page">
+                                <a href="?page={{ num }}" title="Page {{ num }}">
+                                    <span>{{ num }}</span>
+                                </a>
+                            </li>
+                        {% elif num == page_obj.number|add:'-3' %}
+                            <li class="dots">
+                                <span>...</span>
+                            </li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
 
                 {% if page_obj.has_next %}
-                    <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                    <li class="next">
+                        <a href="?page={{ page_obj.next_page_number }}" title="Next page">
+                            <i class="fa-solid fa-caret-right"></i>
+                        </a>
+                    </li>
                 {% endif %}
-            </span>
+            </ul>
         </div>
     {% endif %}
 {% else %}

@@ -1,0 +1,90 @@
+a#createPost {
+  position: absolute;
+  margin-left: 20px;
+  top: 0;
+  margin-top: 120px;
+}
+
+div#posts {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  justify-content: space-evenly;
+}
+div#posts > div {
+  width: 30%;
+  border: 1px solid #232a43;
+  border-radius: 10px;
+  background-color: #f0eadd;
+  text-align: center;
+  margin-bottom: 40px;
+}
+div#posts > div:hover {
+  color: #f1f1e6;
+  background-color: #232a43;
+}
+div#posts > div > div {
+  padding: 10px;
+}
+div#posts > div > div > a > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+div#posts > div > div > a > div > span {
+  margin-bottom: 10px;
+}
+div#posts > div > div > a > div > span.postTitle {
+  font-size: 150%;
+  margin-bottom: 20px;
+}
+
+div#pagination {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin-bottom: 30px;
+}
+div#pagination ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+div#pagination ul a, div#pagination ul li.active {
+  margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #232a43;
+  border-radius: 50%;
+  background-color: #f0eadd;
+}
+div#pagination ul a:hover, div#pagination ul li.active:hover {
+  color: #f1f1e6;
+  background-color: #232a43;
+}
+div#pagination ul a.previous, div#pagination ul a.next, div#pagination ul li.active.previous, div#pagination ul li.active.next {
+  width: 50px;
+  height: 50px;
+}
+div#pagination ul a.active, div#pagination ul li.active.active {
+  background-color: #232a43;
+  color: #f1f1e6;
+}
+div#pagination ul a.dots, div#pagination ul li.active.dots {
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #f0eadd;
+  color: #232a43;
+}
+
+/*# sourceMappingURL=posts.css.map */

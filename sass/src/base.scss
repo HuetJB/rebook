@@ -1,0 +1,162 @@
+// import css reset file
+@import '../imports/reset.scss';
+
+// import constants variables
+@import '../imports/constants';
+
+body {
+  font-family: $font-family;
+  color: $dark_blue;
+  background-color: $white;
+}
+
+header {
+  $header_width: calc($width - 20%);
+
+  background-color: $dark_blue;
+  background-image: $texture_dark_blue;
+  display: flex;
+  justify-content: space-between;
+  height: 70px;
+  width: $header_width;
+  margin-bottom: 35px;
+  padding: 10px calc((100% - $header_width) / 2) 5px calc((100% - $header_width) / 2);
+  text-align: center;
+
+  > div#tabs {
+    display: flex;
+    justify-content: right;
+    width: calc(100% / 2);
+
+    > div {
+      width: 60px;
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+
+      &:hover {
+        cursor: pointer;
+
+        i {
+          color: $yellow;
+        }
+
+        span {
+          color: $yellow;
+        }
+      }
+
+      i {
+        font-size: 200%;
+        margin-bottom: 9px;
+        width: 100%;
+        color: $white;
+      }
+
+      span {
+        text-wrap: nowrap;
+        color: $white;
+      }
+    }
+  }
+
+  > div#homeLink {
+    height: 90%;
+    display: flex;
+    justify-content: center;
+
+    img {
+      height: 100%;
+      width: 100%;
+    }
+
+    img:hover {
+      cursor: pointer;
+      filter: invert(100%);
+      transition: all 0.5s ease-in-out;
+    }
+  }
+}
+
+main {
+  h1, h2, H3, p {
+    width: $width;
+    margin: auto;
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 300%;
+    margin-bottom: 30px;
+  }
+
+  h2 {
+    font-size: 250%;
+    margin-bottom: 30px;
+  }
+
+  p {
+    font-size: 150%;
+  }
+
+  button {
+    padding: 10px 20px;
+    border-radius: 7px;
+    background-color: $yellow;
+    border: 1px solid $dark_blue;
+    color: $dark_blue;
+    font-size: 150%;
+
+    &:hover {
+      cursor: pointer;
+      background-color: $blue;
+      color: $white;
+    }
+  }
+
+  form {
+    $form_width: calc($width - 20%);
+
+    margin: 50px auto;
+    display: flex;
+    flex-direction: column;
+    width: $form_width;
+    text-align: center;
+
+    > div > input {
+      height: 30px;
+      width: 50%;
+      margin: auto;
+      margin-bottom: 20px;
+      border-radius: 7px;
+      text-align: center;
+
+      &:required {
+        border: 1px solid red;
+
+        &:valid {
+          border: 1px solid $dark_blue;
+        }
+      }
+    }
+
+    button {
+      width: 20%;
+      margin: auto;
+      margin-top: 40px;
+    }
+
+    a {
+      text-decoration: underline;
+      font-size: 110%;
+      color: $blue;
+
+      &:hover {
+        color: $yellow;
+      }
+    }
+  }
+}

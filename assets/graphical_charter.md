@@ -1,15 +1,14 @@
 # Graphical Charter
 
-## Fonts
-
 ## Colors
 
-[Link to Coolors pallet](https://coolors.co/141826-f0eadd-dcc197-c79851-c7462a)
+[Link to Coolors pallet](https://coolors.co/232a43-498cff-f1f1e6-f0eadd-f9c741)
 
-- Dark Blue : `#141826`
-- White : `#f0eadd`
-- Yellow : `#dcc197` and `#c79851`
-- Red : `#c7462a`
+- Dark Blue : `#232a43`
+- Blue : `#498cff`
+- White : `#f1f1e6`
+- Beige : `#f0eadd`
+- Yellow : `#f9c741`
 
 ![color pallet](./color_pallet.svg)
 
@@ -23,8 +22,10 @@
 <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
 ```
 
-## Logo
+## Icons
 
-![logo](./icons/logo.png)
+[Link to Google Icons](https://fonts.google.com/icons)
+
+## Logo
 
 ![logo](./icons/logo.svg)

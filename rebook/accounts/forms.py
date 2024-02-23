@@ -1,16 +1,23 @@
-from datetime import date
-
-from django.contrib.auth.forms import UserCreationForm
-from django.forms import DateField, EmailField, SelectDateWidget
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField
+from django.forms import CharField, DateField, DateInput, EmailField, PasswordInput, TextInput
 
 from .models import UserProfile
 
 
+class UserLoginForm(AuthenticationForm):
+    def __init__(self, *args, **kwargs):
+        super(UserLoginForm, self).__init__(*args, **kwargs)
+
+    username = UsernameField(widget=TextInput(attrs={"placeholder": "Username"}), label="", required=True)
+    password = CharField(widget=PasswordInput(attrs={"placeholder": "Password"}), label="", required=True)
+
+
 class SignupForm(UserCreationForm):
-    email = EmailField(max_length=200, help_text="Required", required=True)
-    birth_date = DateField(
-        required=True, label="Birth Date", widget=SelectDateWidget(years=range(1900, date.today().year + 1))
-    )
+    username = UsernameField(widget=TextInput(attrs={"placeholder": "Username"}), label="", required=True)
+    email = EmailField(max_length=200, widget=TextInput(attrs={"placeholder": "Email"}), label="", required=True)
+    birth_date = DateField(widget=DateInput(attrs=dict(type="date")), label="", required=True)
+    password1 = CharField(widget=PasswordInput(attrs={"placeholder": "Password"}), label="", required=True)
+    password2 = CharField(widget=PasswordInput(attrs={"placeholder": "Password Confirmation"}), label="", required=True)
 
     class Meta:
         model = UserProfile

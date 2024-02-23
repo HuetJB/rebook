@@ -141,14 +141,14 @@ docker build -t sass-compiler:latest ./sass/build
 To generate the `css` files from the `sass` files, you need to run the following command :
 
 ```bash
-docker run --rm -v ./sass:/app/src -v ./rebook/static/css:/app/results sass-compiler:latest /app/src:/app/results
+docker run --rm -v ./sass/imports:/app/imports -v ./sass/src:/app/src -v ./rebook/static/css:/app/results sass-compiler:latest /app/src:/app/results
 ```
 
 And to watch the `sass` files and compile them automatically, you need to run the following command :
 
 ```bash
 # for start
-docker run --name sass --rm -d -v ./sass:/app/src -v ./rebook/static/css:/app/results sass-compiler:latest /app/src:/app/results --watch
+docker run --name sass --rm -d -v ./sass/imports:/app/imports -v ./sass/src:/app/src -v ./rebook/static/css:/app/results sass-compiler:latest /app/src:/app/results --watch
 
 # for stop
 docker stop sass

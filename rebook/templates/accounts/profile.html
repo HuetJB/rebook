@@ -1,14 +1,36 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block title %}Profile / {{ block.super }}{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/accounts/profile.css' %}">
+{% endblock %}
 
 {% block content %}
     <h1>Profile</h1>
 
-    <p>Username : {{ user.username }}</p>
-    <p>Email : {{ user.email }}</p>
+    <div id="profileInfos">
+        <div id="username">
+            <span>Username :</span>
+            <span>{{ user.username }}</span>
+        </div>
 
-    <p><a href="{% url 'password_change' %}">Password Change</a></p>
+        <div id="email">
+            <span>Email :</span>
+            <span>{{ user.email }}</span>
+        </div>
 
-    {% include "registration/logout.html" %}
+        <div id="bithDate">
+            <span>Birth Date :</span>
+            <span>{{ user.get_birth_date }}</span>
+        </div>
+    </div>
+
+    <div id="changePassword">
+        <a href="{% url 'password_change' %}">
+            <button>Change Password</button>
+        </a>
+    </div>
 {% endblock %}

@@ -8,62 +8,96 @@
     <meta charset="utf-8">
 
     <title>{% block title %}{{ app_name }}{% endblock %}</title>
+    <meta name="version" content="{{ app_version }}">
 
-    {% comment %} Import ubuntu font from google {% endcomment %}
-    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    {% comment %} Import google fonts {% endcomment %}
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap">
+
+    {% comment %} Import fontawesome for use fontawesome icons {% endcomment %}
+    <script src="https://kit.fontawesome.com/26f41ea7f5.js" crossorigin="anonymous"></script>
 
     {% comment %} define the favicon {% endcomment %}
     <link rel="icon" href="{% static 'icons/favicon.ico' %}" type="image/x-icon">
 
     {% comment %} define the css files {% endcomment %}
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {% block head %}
+    {% endblock %}
 </head>
 
 <body>
     <script src="{% static 'js/main.js' %}"></script>
 
     <header>
-        <img src="{% static 'icons/logo.svg' %}" alt="logo" width="200">
+        <div id="homeLink">
+            <a title="Home" href="{% url 'home' %}">
+                <img src="{% static 'icons/logo.svg' %}" alt="logo rebook">
+            </a>
+        </div>
 
-        <h3>Header</h3>
-
-        <ul>
-            <li><a href="{% url 'home' %}">Home</a></li>
+        <div id="tabs">
             {% if user.is_authenticated %}
-                <li><a href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'post_create' %}">Create Post</a></li>
-                <li><a href="{% url 'personnals_posts' %}">My Posts</a></li>
-                <li><a href="{% url 'favourites_posts' %}">My Favourites Posts</a></li>
-                <li><a href="{% url 'personals_chats' %}">My Chats</a></li>
+                <div id="myPostsLink">
+                    <a title="My posts" href="{% url 'personnals_posts' %}">
+                        <i class="fa-solid fa-book"></i>
+                        <span>My Posts</span>
+                    </a>
+                </div>
+
+                <div id="favoritesLink">
+                    <a title="Liked posts" href="{% url 'favourites_posts' %}">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>Likes</span>
+                    </a>
+                </div>
+
+                <div id="chatsLink">
+                    <a title="Chats" href="{% url 'personals_chats' %}">
+                        <i class="fa-solid fa-comment-dots"></i>
+                        <span>Chats</span>
+                    </a>
+                </div>
+
+                <div id="profileLink">
+                    <a title="Profile" href="{% url 'profile' %}">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Profile</span>
+                    </a>
+                </div>
+
+                <div id="logoutLink">
+                    <form action="{% url 'logout' %}" method="post">
+                        {% csrf_token %}
+
+                        <button type="submit">
+                            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                            <span>Log Out</span>
+                        </button>
+                    </form>
+                </div>
             {% else %}
-                <li><a href="{% url 'login' %}">Log In</a></li>
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <div id="loginLink">
+                    <a title="Log In" href="{% url 'login' %}">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Log In</span>
+                    </a>
+                </div>
+
+                <div id="signUpLink">
+                    <a href="{% url 'signup' %}", title="Sign Up">
+                        <i class="fa-solid fa-user-plus"></i>
+                        <span>Sign Up</span>
+                    </a>
+                </div>
             {% endif %}
-        </ul>
-
-        {% if user.is_authenticated %}
-            {% include "registration/logout.html" %}
-        {% endif %}
-
-        <br><hr>
+        </div>
     </header>
 
     <main>
         {% block content %}
         {% endblock %}
     </main>
-
-    <footer>
-        <br><hr>
-
-        <h3>Footer</h3>
-
-        <ul>
-            <li>Username : {{ user.username }}</li>
-            <li>Name : {{ app_name }}</li>
-            <li>Version : {{ app_version }}</li>
-        </ul>
-    </footer>
 </body>
 
 </html>

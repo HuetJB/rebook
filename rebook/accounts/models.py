@@ -7,3 +7,6 @@ class UserProfile(AbstractUser):
 
     def __str__(self):
         return self.username
+
+    def get_birth_date(self):
+        return self.birth_date.strftime("%d/%m/%Y")
