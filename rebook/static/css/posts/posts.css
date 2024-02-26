@@ -2,52 +2,100 @@ a#createPost {
   position: absolute;
   margin-left: 20px;
   top: 0;
-  margin-top: 120px;
+  margin-top: 110px;
 }
 
 div#posts {
   width: 80%;
-  margin: auto;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-content: flex-start;
-  justify-content: space-evenly;
+  flex-direction: column;
+  margin: auto;
+  row-gap: 30px;
+  margin-bottom: 50px;
 }
 div#posts > div {
-  width: 30%;
-  border: 1px solid #232a43;
-  border-radius: 10px;
+  width: 100%;
+  height: 250px;
+  border: 1.5px solid #232a43;
+  border-radius: 20px;
   background-color: #f0eadd;
-  text-align: center;
-  margin-bottom: 40px;
+  overflow: hidden;
 }
 div#posts > div:hover {
   color: #f1f1e6;
   background-color: #232a43;
 }
-div#posts > div > div {
-  padding: 10px;
+div#posts > div:hover div.postInfos div.postBook, div#posts > div:hover div.postInfos span.postDescription {
+  border: 1.5px solid #f1f1e6;
 }
-div#posts > div > div > a > div {
+div#posts > div:hover div.postInfos span.postPrice {
+  color: #f9c741;
+}
+div#posts > div > a {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+div#posts > div > a div.postImage {
+  width: fit-content;
+  max-width: 50%;
+  display: flex;
+  height: 100%;
   align-items: center;
+  border-right-width: 1.5px;
+  border-right-style: solid;
+  border-right-color: #232a43;
+  flex: none;
 }
-div#posts > div > div > a > div > span {
-  margin-bottom: 10px;
+div#posts > div > a div.postImage > img {
+  max-height: 100%;
+  max-width: 100%;
 }
-div#posts > div > div > a > div > span.postTitle {
-  font-size: 150%;
+div#posts > div > a div.postInfos {
+  padding: 10px 15px;
+  flex: 100%;
+}
+div#posts > div > a div.postInfos span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+div#posts > div > a div.postInfos span.postTitle {
+  text-align: center;
+  font-size: 30px;
+}
+div#posts > div > a div.postInfos span.postDescription {
+  font-size: 20px;
+  margin-top: 20px;
+  height: 60px;
+  border: 1.5px solid #232a43;
+  border-radius: 20px;
+  padding: 10px;
   margin-bottom: 20px;
+}
+div#posts > div > a div.postInfos > div {
+  display: flex;
+}
+div#posts > div > a div.postInfos > div div.postBook {
+  border: 1.5px solid #232a43;
+  border-radius: 20px;
+  padding: 10px;
+  width: 70%;
+}
+div#posts > div > a div.postInfos > div div.postBook span.postBookAuthor {
+  margin-top: 5px;
+}
+div#posts > div > a div.postInfos > div span.postPrice {
+  width: 30%;
+  font-size: 30px;
+  color: #498cff;
+  margin: auto;
+  text-align: center;
 }
 
 div#pagination {
   display: flex;
   justify-content: center;
-  position: absolute;
-  bottom: 0;
   width: 100%;
   margin-bottom: 30px;
 }

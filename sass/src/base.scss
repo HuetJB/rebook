@@ -11,22 +11,20 @@ body {
 }
 
 header {
-  $header_width: calc($width - 20%);
-
   background-color: $dark_blue;
   background-image: $texture_dark_blue;
   display: flex;
   justify-content: space-between;
   height: 70px;
-  width: $header_width;
+  width: calc(100% - 20px);
+  padding: 5px 20px 0 0;
   margin-bottom: 35px;
-  padding: 10px calc((100% - $header_width) / 2) 5px calc((100% - $header_width) / 2);
   text-align: center;
 
   > div#tabs {
     display: flex;
     justify-content: right;
-    width: calc(100% / 2);
+    margin-top: 8px;
 
     > div {
       width: 60px;
@@ -49,9 +47,8 @@ header {
       }
 
       i {
-        font-size: 200%;
+        font-size: 25px;
         margin-bottom: 9px;
-        width: 100%;
         color: $white;
       }
 
@@ -63,13 +60,13 @@ header {
   }
 
   > div#homeLink {
-    height: 90%;
+    height: 70px;
+    margin-top: -3px;
     display: flex;
     justify-content: center;
 
     img {
       height: 100%;
-      width: 100%;
     }
 
     img:hover {
@@ -81,34 +78,32 @@ header {
 }
 
 main {
-  h1, h2, H3, p {
-    width: $width;
-    margin: auto;
-    margin-bottom: 50px;
+  h1, h2, p {
     text-align: center;
+    margin-bottom: 40px;
   }
 
   h1 {
-    font-size: 300%;
-    margin-bottom: 30px;
+    font-size: 45px;
   }
 
   h2 {
-    font-size: 250%;
-    margin-bottom: 30px;
+    font-size: 35px;
   }
 
   p {
-    font-size: 150%;
+    font-size: 23px;
+    margin-bottom: 60px;
   }
 
   button {
+    text-wrap: nowrap;
     padding: 10px 20px;
     border-radius: 7px;
     background-color: $yellow;
     border: 1px solid $dark_blue;
     color: $dark_blue;
-    font-size: 150%;
+    font-size: 23px;
 
     &:hover {
       cursor: pointer;
@@ -118,19 +113,15 @@ main {
   }
 
   form {
-    $form_width: calc($width - 20%);
-
     margin: 50px auto;
     display: flex;
     flex-direction: column;
-    width: $form_width;
     text-align: center;
 
     > div {
       display: flex;
-      justify-content: space-between;
       margin: auto;
-      width: 50%;
+      width: 300px;
       margin-bottom: 20px;
       text-wrap: nowrap;
       align-items: baseline;
@@ -141,8 +132,7 @@ main {
       }
 
       > input, > textarea {
-        font-size: 100%;
-        width: 100%;
+        font-size: 20px;
         height: 30px;
         border-radius: 7px;
         text-align: center;
@@ -158,7 +148,6 @@ main {
       }
 
       > input[type="file"] {
-        height: 100%;
         padding: 5px;
       }
 
@@ -171,7 +160,7 @@ main {
     }
 
     button {
-      width: 20%;
+      width: 100px;
       margin: auto;
       margin-top: 40px;
     }

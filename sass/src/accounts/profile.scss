@@ -2,16 +2,24 @@
 @import '../../imports/constants';
 
 div#profileInfos {
-    $div_width: calc($width - 50%);
-
     margin: 50px auto;
-    width: $div_width;
+    width: 350px;
 
     > div {
         display: flex;
         justify-content: space-between;
-        font-size: 150%;
+        font-size: 23px;
         margin-bottom: 20px;
+
+        span {
+            text-wrap: nowrap;
+        }
+
+        span.profileValue {
+            margin-left: 10px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
 }
 

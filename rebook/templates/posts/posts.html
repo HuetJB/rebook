@@ -2,17 +2,27 @@
     <div id="posts">
         {% for post in posts %}
             <div id="post-{{ post.id }}">
-                <div>
-                    <a href="{% url 'post_detail' post.id %}" title="Post {{ post.title }}">
+                <a href="{% url 'post_detail' post.id %}" title="Post {{ post.title }}">
+                    <div class="postImage">
+                        <img src="{{ post.image_1.url }}" alt="{{ post.book.title }} first image">
+                    </div>
+
+                    <div class="postInfos">
+                        <span class="postTitle">{{ post.title }}</span>
+
+                        <span class="postDescription">{{ post.description }}</span>
+
                         <div>
-                            <span class="postTitle">{{ post.title }}</span>
-                            <span>{{ post.description }}</span>
-                            <span>Book : {{ post.book_title }} ({{ post.book_author }})</span>
-                            <span>Seller : {{ post.seller }}</span>
-                            <span>Price : {{ post.price }} €</span>
+                            <div class="postBook">
+                                <span class="postBookTitle">Title : {{ post.book_title }}</span>
+
+                                <span class="postBookAuthor">Author : {{ post.book_author }}</span>
+                            </div>
+
+                            <span class="postPrice">{{ post.price }} €</span>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
             </div>
         {% endfor %}
     </div>

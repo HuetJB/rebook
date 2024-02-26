@@ -26,7 +26,7 @@ class Post(Model):
     book_author = CharField(max_length=100)
     book_published_at = DateField()
 
-    image_1 = ImageField(upload_to=IMAGES_FOLDER, blank=True, null=True)
+    image_1 = ImageField(upload_to=IMAGES_FOLDER)
     image_2 = ImageField(upload_to=IMAGES_FOLDER, blank=True, null=True)
     image_3 = ImageField(upload_to=IMAGES_FOLDER, blank=True, null=True)
 

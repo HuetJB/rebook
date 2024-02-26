@@ -14,12 +14,12 @@
     <div id="profileInfos">
         <div id="username">
             <span>Username :</span>
-            <span>{{ user.username }}</span>
+            <span class="profileValue">{{ user.username }}</span>
         </div>
 
         <div id="email">
             <span>Email :</span>
-            <span>
+            <span class="profileValue">
                 {% if user.email %}
                     {{ user.email }}
                 {% else %}
@@ -30,7 +30,7 @@
 
         <div id="bithDate">
             <span>Birth Date :</span>
-            <span>
+            <span class="profileValue">
                 {% if user.get_birth_date %}
                     {{ user.get_birth_date }}
                 {% else %}

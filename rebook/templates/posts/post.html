@@ -44,8 +44,10 @@
     <p>Author: {{ post.book_author }}</p>
     <p>Published: {{ post.book_published_at|date:"d-m-Y" }}</p>
 
-    {% if post.image_1 %}<img src="{{ post.image_1.url }}" alt="{{ post.book.title }} first image">{% endif %}
+    <img src="{{ post.image_1.url }}" alt="{{ post.book.title }} first image">
+
     {% if post.image_2 %}<img src="{{ post.image_2.url }}" alt="{{ post.book.title }} second image">{% endif %}
+
     {% if post.image_3 %}<img src="{{ post.image_3.url }}" alt="{{ post.book.title }} third image">{% endif %}
 
     <script src="{% static 'js/posts/post.js' %}"></script>
