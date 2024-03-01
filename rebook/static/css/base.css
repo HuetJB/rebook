@@ -138,7 +138,7 @@ main p {
   font-size: 23px;
   margin-bottom: 60px;
 }
-main button {
+main button, main form > input[type=submit] {
   text-wrap: nowrap;
   padding: 10px 20px;
   border-radius: 7px;
@@ -147,7 +147,7 @@ main button {
   color: #232a43;
   font-size: 23px;
 }
-main button:hover {
+main button:hover, main form > input[type=submit]:hover {
   cursor: pointer;
   background-color: #498cff;
   color: #f1f1e6;
@@ -157,6 +157,11 @@ main form {
   display: flex;
   flex-direction: column;
   text-align: center;
+}
+main form > input[type=submit] {
+  width: fit-content;
+  margin: auto;
+  margin-top: 30px;
 }
 main form > div {
   display: flex;
