@@ -121,7 +121,7 @@ main {
     > div {
       display: flex;
       margin: auto;
-      width: 300px;
+      width: 500px;
       margin-bottom: 20px;
       text-wrap: nowrap;
       align-items: baseline;
@@ -132,6 +132,7 @@ main {
       }
 
       > input, > textarea {
+        width: 100%;
         font-size: 20px;
         height: 30px;
         border-radius: 7px;
@@ -147,7 +148,11 @@ main {
         }
       }
 
-      > input[type="file"] {
+      > input[type=date], input[type=file], label {
+        cursor: pointer;
+      }
+
+      > input[type=file] {
         padding: 5px;
       }
 
@@ -160,7 +165,6 @@ main {
     }
 
     button {
-      width: 100px;
       margin: auto;
       margin-top: 40px;
     }

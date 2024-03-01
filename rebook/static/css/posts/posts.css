@@ -31,6 +31,9 @@ div#posts > div:hover div.postInfos div.postBook, div#posts > div:hover div.post
 div#posts > div:hover div.postInfos span.postPrice {
   color: #f9c741;
 }
+div#posts > div:hover > a div.postImage {
+  border-right-color: #f1f1e6;
+}
 div#posts > div > a {
   display: flex;
   height: 100%;

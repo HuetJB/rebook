@@ -37,6 +37,10 @@ div#posts {
                     color: $yellow;
                 }
             }
+
+            > a div.postImage {
+                border-right-color: $white;
+            }
         }
 
         > a {

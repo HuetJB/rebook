@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm, UserCreationForm, UsernameField
 from django.forms import CharField, DateField, DateInput, EmailField, PasswordInput, TextInput
 
 from .models import UserProfile
@@ -10,6 +10,17 @@ class UserLoginForm(AuthenticationForm):
 
     username = UsernameField(widget=TextInput(attrs={"placeholder": "Username"}), label="", required=True)
     password = CharField(widget=PasswordInput(attrs={"placeholder": "Password"}), label="", required=True)
+
+
+class UserChangePasswordForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super(UserChangePasswordForm, self).__init__(*args, **kwargs)
+
+    old_password = CharField(widget=PasswordInput(attrs={"placeholder": "Old Password"}), label="", required=True)
+    new_password1 = CharField(widget=PasswordInput(attrs={"placeholder": "New Password"}), label="", required=True)
+    new_password2 = CharField(
+        widget=PasswordInput(attrs={"placeholder": "New Password Confirmation"}), label="", required=True
+    )
 
 
 class SignupForm(UserCreationForm):

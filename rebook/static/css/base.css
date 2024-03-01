@@ -161,7 +161,7 @@ main form {
 main form > div {
   display: flex;
   margin: auto;
-  width: 300px;
+  width: 500px;
   margin-bottom: 20px;
   text-wrap: nowrap;
   align-items: baseline;
@@ -171,6 +171,7 @@ main form > div > label {
   text-align: left;
 }
 main form > div > input, main form > div > textarea {
+  width: 100%;
   font-size: 20px;
   height: 30px;
   border-radius: 7px;
@@ -183,6 +184,9 @@ main form > div > input:required, main form > div > textarea:required {
 main form > div > input:required:valid, main form > div > textarea:required:valid {
   border: 1px solid #232a43;
 }
+main form > div > input[type=date], main form > div input[type=file], main form > div label {
+  cursor: pointer;
+}
 main form > div > input[type=file] {
   padding: 5px;
 }
@@ -193,7 +197,6 @@ main form > div > textarea {
   text-align: left;
 }
 main form button {
-  width: 100px;
   margin: auto;
   margin-top: 40px;
 }
