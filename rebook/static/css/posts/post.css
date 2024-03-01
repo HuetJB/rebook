@@ -1,0 +1,42 @@
+div#post {
+  margin: 50px;
+  display: flex;
+  border: 1.5px solid #232a43;
+  border-radius: 20px;
+  background-color: #f0eadd;
+  overflow: hidden;
+}
+div#post div#images {
+  display: flex;
+  width: 60%;
+  position: relative;
+  border-right-width: 1.5px;
+  border-right-style: solid;
+  border-right-color: #232a43;
+  align-items: center;
+  justify-content: center;
+}
+div#post div#images button {
+  position: absolute;
+  bottom: -0.5px;
+}
+div#post div#images button#previous {
+  left: -1px;
+  border-top-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+div#post div#images img {
+  width: 100%;
+  height: auto;
+}
+div#post div#images button#next {
+  right: -0.5px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+div#post div#postInfos {
+  width: 40%;
+}
+
+/*# sourceMappingURL=post.css.map */

@@ -1,0 +1,50 @@
+// import constants variables
+@import '../../imports/constants';
+
+div#post {
+    margin: 50px;
+    display: flex;
+    border: 1.5px solid $dark_blue;
+    border-radius: 20px;
+    background-color: $beige;
+    overflow: hidden;
+
+    div#images {
+        display: flex;
+        width: 60%;
+        position: relative;
+        border-right-width: 1.5px;
+        border-right-style: solid;
+        border-right-color: #232a43;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            position: absolute;
+            bottom: -0.5px;
+        }
+
+        button#previous {
+            left: -1px;
+            border-top-left-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        button#next {
+            right: -0.5px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+    }
+
+    div#postInfos {
+        width: 40%;
+
+    }
+}
